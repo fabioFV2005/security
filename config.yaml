@@ -1,0 +1,44 @@
+source: 0
+person_model: yolo26n.pt
+face_model: models/face_cover.pt
+device: auto
+imgsz: 640
+person_conf: 0.5
+face_conf: 0.4
+face_imgsz: 320
+process_every: 1
+show_window: true
+save_dir: alerts
+
+zone: []
+
+tracking:
+  smooth_window: 8
+  min_votes: 3
+  min_track_frames: 5
+  forget_seconds: 5
+
+severity:
+  night_hours: [22, 6]
+  dwell_seconds: 20
+  weights:
+    person: 1
+    face_mask: 1
+    face_covered: 3
+    night: 1
+    zone: 1
+    dwell: 1
+    group_covered: 1
+
+alerts:
+  min_level: LOW
+  cooldown_seconds:
+    LOW: 300
+    MEDIUM: 120
+    HIGH: 30
+    CRITICAL: 10
+
+telegram:
+  enabled: true
+  token: "9080491781:AAHzkTs_MCI8QCoMClhItx9FLoZdw2EUPBA"
+  chat_id: "1456542552"
